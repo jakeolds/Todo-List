@@ -1,0 +1,60 @@
+/* ListDetailView.css */
+
+/* Container for the entire List Detail View */
+.list-detail-view {
+    background-color: #cfd8dc; /* Darker pastel grey background */
+    padding: 30px; /* Increased padding for larger container size */
+    border-radius: 12px; /* Slightly larger rounded corners for the container */
+    max-width: 800px; /* Increased maximum width of the container */
+    margin: 40px auto; /* Increased margin for more space and centering the container */
+    text-align: center; /* Centering text */
+    transition: transform 0.2s ease-in-out; /* Animation on hover */
+  }
+  
+  .list-detail-view:hover {
+    transform: scale(1.03); /* Slightly larger scale up on hover */
+  }
+  
+  .list-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px; /* Increased space between header and content */
+  }
+  
+  .list-icon {
+    font-size: 4rem; /* Increased size for the icon */
+    margin-bottom: 20px; /* Increased space between icon and title */
+  }
+  
+  .list-title {
+    font-size: 2.5rem; /* Increased size of the title */
+    font-weight: bold;
+    color: #333; /* Dark color for text for readability */
+    margin: 0 0 20px 0; /* Adjusted margins */
+  }
+  
+  .progress-bar-container {
+    width: 100%; /* Full width */
+    background-color: #e0e0e0; /* Light grey for background */
+    border-radius: 25px; /* More rounded corners for the progress bar */
+    overflow: hidden; /* Hide the overflow to maintain the rounded corners */
+    margin-bottom: 30px; /* Increased space between progress bar and the next section */
+  }
+  
+  .progress-bar {
+    height: 25px; /* Increased height for a thicker progress bar */
+    background-color: var(--primary-color, #5cb85c); /* Use a CSS variable for primary color or fallback color */
+    width: 0; /* Start width from 0 for animation */
+    border-radius: 25px; /* More rounded corners for the filler */
+    transition: width 0.5s ease-in-out; /* Smooth transition for the filler */
+  }
+  
+  /* Ensuring the form is centered and styled */
+  .todo-form {
+    /* ... existing styles ... */
+  }
+  
+  /* Add any additional animations or styles for other elements here */
+  
+  

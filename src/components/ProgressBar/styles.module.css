@@ -1,0 +1,21 @@
+/* components/ProgressBar/styles.module.css */
+@keyframes fillProgress {
+  from { width: 0; }
+  to { width: var(--progress-width); }
+}
+
+.progressBar {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    margin: 20px 0;
+    animation: fillProgress 2s ease-in-out forwards;
+  }
+  
+  .progressBarFiller {
+    height: 20px;
+    background-color: var();
+    border-radius: 20px 0 0 20px;
+    transition: width 0.5s ease-in-out;
+  }
+  

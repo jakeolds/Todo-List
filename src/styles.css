@@ -1,0 +1,114 @@
+/* Global Styles */
+:root {
+    --primary-color: #28a745; /* This is a green shade for the primary color */
+    --background-grey: #cfd8dc;
+  }
+  
+  body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    background-color: #cfd8dc; /* Darker pastel grey */
+    color: #333;
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Header Styles */
+  .header {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .header h1 {
+    color: #007bff;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  /* TodoForm Styles */
+  .todo-form {
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .todo-input {
+    width: calc(100% - 100px);
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    vertical-align: top;
+  }
+  
+  .todo-button {
+    width: 80px;
+    height: 40px;
+    background-color: var(--primary-color); /* Using primary color variable */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .todo-button:hover {
+    background-color: darken(var(--primary-color), 10%); /* Darken function may require a CSS preprocessor like SASS */
+  }
+  
+  /* TodoList Styles */
+  .todo-list {
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  /* TodoItem Styles */
+  .todo-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .todo-item.completed .text {
+    text-decoration: line-through;
+    color: #aaa;
+  }
+  
+  /* Footer Styles */
+  .footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .footer p {
+    color: #777;
+  }
+  
+  /* Add the progress bar styles here if not already in a separate CSS module */
+  .progressBar {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 20px;
+  }
+  
+  .progressBarFiller {
+    height: 20px;
+    background-color: var(--primary-color); /* Use the primary color variable */
+    border-radius: 20px 0 0 20px;
+    transition: width 0.5s ease-in-out;
+  }
+  
