@@ -2,9 +2,11 @@
 :root {
     --primary-color: #28a745; /* This is a green shade for the primary color */
     --background-grey: #cfd8dc;
+    
   }
   
   body, html {
+    font-family: 'Open+Sans', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;

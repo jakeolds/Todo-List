@@ -2,14 +2,10 @@ import React from 'react';
 import TodoItem from '../TodoItem';
 import styles from './styles.module.css';
 
-function TodoList({ todos, toggleComplete }) {
-  // Log the current state of todos for debugging
-  console.log('Current todos in TodoList:', todos);
-
-  // Safeguard: Render null or a message if todos is undefined
+function TodoList({ todos, toggleComplete, onEditTask, onDeleteTask }) {
   if (!todos) {
     console.error('TodoList was rendered without todos. This should not happen.');
-    return null; // or return a fallback UI if you prefer
+    return null; // or return a fallback UI
   }
 
   return (
@@ -19,6 +15,8 @@ function TodoList({ todos, toggleComplete }) {
           key={todo.id} 
           todo={todo} 
           toggleComplete={toggleComplete}
+          onEdit={onEditTask} // Renamed to match expected prop name in TodoItem
+          onDelete={onDeleteTask} // Renamed to match expected prop name in TodoItem
         />
       ))}
     </div>

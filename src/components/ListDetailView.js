@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTasks } from '../hooks/useTasks';
 import ProgressBar from './ProgressBar';
@@ -9,43 +9,56 @@ import './ListDetailView.css';
 
 function ListDetailView({ lists, updateListTasks }) {
   const { listId } = useParams();
-  const listIndex = lists.findIndex(list => list.id.toString() === listId);
+  const list = lists.find(list => list.id.toString() === listId);
 
-  // Declare list at the beginning and use it later
-  const list = listIndex !== -1 ? lists[listIndex] : null;
+  const { tasks, addTask, editTask, toggleTaskCompleted, calculateProgress } = useTasks(list ? list.tasks : []);
+  const [editingTaskId, setEditingTaskId] = useState(null);
 
-  // Initialize tasks state with an empty array if list is not found
-  const { tasks, addTask, toggleTaskCompleted, calculateProgress } = useTasks(list ? list.tasks : []);
-
-  // Update the parent state when tasks change
   useEffect(() => {
-    // Function to check if tasks are different
-    const tasksAreDifferent = (newTasks, currentTasks) => {
-      if (newTasks.length !== currentTasks.length) return true;
-      for (let i = 0; i < newTasks.length; i++) {
-        if (newTasks[i].id !== currentTasks[i].id || newTasks[i].isCompleted !== currentTasks[i].isCompleted) {
-          return true;
-        }
-      }
-      return false;
-    };
-  
-    if (list && tasksAreDifferent(tasks, list.tasks)) {
+    if (list && tasks !== list.tasks) {
       updateListTasks(list.id, tasks);
     }
   }, [tasks, list, updateListTasks]);
+
+  const handleEditTask = (task) => {
+    setEditingTaskId(task.id);
+  };
+
+  const handleCancelEdit = () => {
+    setEditingTaskId(null);
+  };
+
+  const handleDeleteTask = (taskId) => {
+    const updatedTasks = tasks.filter(task => task.id !== taskId);
+    updateListTasks(list.id, updatedTasks);
+  };
+
+  if (!list) {
+    return <div>List not found</div>;
+  }
 
   const IconComponent = icons.find(icon => icon.name === list.icon)?.component;
 
   return (
     <div className="list-detail-view">
-        <h1>{list.title}</h1>
-        {IconComponent && <IconComponent size={30} />}
-        <ProgressBar progress={calculateProgress()} color={list.colorTheme} />
-        <TodoForm addTodo={addTask} />
-        <TodoList todos={tasks} toggleComplete={toggleTaskCompleted} />
+      <h1>{list.title}</h1>
+      {IconComponent && <IconComponent size={30} />}
+      <ProgressBar progress={calculateProgress()} color={list.colorTheme} />
+      <TodoForm
+        addTodo={addTask}
+        editTodo={editTask}
+        todoBeingEdited={tasks.find(task => task.id === editingTaskId)}
+        cancelEdit={handleCancelEdit}
+      />
+      <TodoList
+        todos={tasks}
+        toggleComplete={toggleTaskCompleted}
+        onEditTask={handleEditTask}
+        onDeleteTask={handleDeleteTask}
+      />
     </div>
   );
 }
 
 export default ListDetailView;
+
