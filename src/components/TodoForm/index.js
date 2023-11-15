@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 function TodoForm({ addTodo, editTodo, todoBeingEdited, cancelEdit }) {
   const [input, setInput] = useState('');
 
-  // If there is a todoBeingEdited, prefill the form
+ 
   useEffect(() => {
     if (todoBeingEdited) setInput(todoBeingEdited.text);
   }, [todoBeingEdited]);
@@ -27,7 +27,7 @@ function TodoForm({ addTodo, editTodo, todoBeingEdited, cancelEdit }) {
       });
     }
     setInput('');
-    if (cancelEdit) cancelEdit(); // If there's a cancelEdit function, call it
+    if (cancelEdit) cancelEdit(); 
   };
 
   return (

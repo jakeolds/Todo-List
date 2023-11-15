@@ -1,7 +1,7 @@
 // components/NewListModal.js
 import React, { useState } from 'react';
 import { icons } from './icons'; // Import the icons from the centralized icons.js file
-import './NewListModal.css'; // Ensure your styles are in place
+import './NewListModal.css';
 
 // Define a calming color palette
 const calmingColors = [
@@ -17,17 +17,19 @@ const calmingColors = [
   '#fafac6', // Pale lemon
 ];
 
-function NewListModal({ addList, closeModal }) {
-  const [title, setTitle] = useState('');
-  const [selectedIcon, setSelectedIcon] = useState(icons[0].name);
-  const [colorTheme, setColorTheme] = useState(calmingColors[0]);
+function NewListModal({ addOrUpdateList, closeModal, editingList }) {
+  // If editing an existing list, prefill the form, otherwise start with empty values
+  const [title, setTitle] = useState(editingList ? editingList.title : '');
+  const [selectedIcon, setSelectedIcon] = useState(editingList ? editingList.icon : icons[0].name);
+  const [colorTheme, setColorTheme] = useState(editingList ? editingList.colorTheme : calmingColors[0]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addList(title, selectedIcon, colorTheme); // Pass the icon's name
+    // Use editingList's id if available, otherwise pass null for a new list
+    addOrUpdateList(editingList ? editingList.id : null, title, selectedIcon, colorTheme);
     closeModal();
   };
-
+  
   return (
     <div className="new-list-modal-overlay">
       <div className="new-list-modal-content">

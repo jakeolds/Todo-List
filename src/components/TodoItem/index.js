@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCheck, FaEdit, FaTrash } from 'react-icons/fa'; // Import additional icons
+import { FaCheck, FaEdit, FaTrash } from 'react-icons/fa';
 import styles from './styles.module.css';
 
 function TodoItem({ todo, toggleComplete, onEdit, onDelete }) {
@@ -22,3 +22,5 @@ function TodoItem({ todo, toggleComplete, onEdit, onDelete }) {
 }
 
 export default TodoItem;
+
+

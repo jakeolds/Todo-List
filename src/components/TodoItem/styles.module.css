@@ -41,11 +41,11 @@
     border: none;
     cursor: pointer;
     margin-left: 8px;
-    color: #ffb703; /* Example color for the edit button */
+    color: #ffb703; 
   }
   
   .deleteButton {
-    color: #d90429; /* Example color for the delete button */
+    color: #d90429; 
   }
   
   .editButton:hover,
