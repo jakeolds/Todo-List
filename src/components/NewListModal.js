@@ -1,5 +1,5 @@
 // components/NewListModal.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { icons } from './icons'; // Import the icons from the centralized icons.js file
 import './NewListModal.css';
 
@@ -23,13 +23,18 @@ function NewListModal({ addOrUpdateList, closeModal, editingList }) {
   const [selectedIcon, setSelectedIcon] = useState(editingList ? editingList.icon : icons[0].name);
   const [colorTheme, setColorTheme] = useState(editingList ? editingList.colorTheme : calmingColors[0]);
 
+  useEffect(() => {
+    // Update CSS variable for selected color
+    document.documentElement.style.setProperty('--selected-color-theme', colorTheme);
+  }, [colorTheme]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Use editingList's id if available, otherwise pass null for a new list
     addOrUpdateList(editingList ? editingList.id : null, title, selectedIcon, colorTheme);
     closeModal();
   };
-  
+
   return (
     <div className="new-list-modal-overlay">
       <div className="new-list-modal-content">

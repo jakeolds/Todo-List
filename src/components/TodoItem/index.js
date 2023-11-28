@@ -7,11 +7,11 @@ function TodoItem({ todo, toggleComplete, onEdit, onDelete }) {
     <div className={`${styles.todoItem} ${todo.isCompleted ? styles.completed : ''}`}>
       <div className={styles.text}>{todo.text}</div>
       <div className={styles.actions}>
-        <button className={styles.editButton} onClick={() => onEdit(todo)}>
-          <FaEdit />
-        </button>
         <button className={styles.completeButton} onClick={() => toggleComplete(todo.id)}>
           <FaCheck />
+        </button>
+        <button className={styles.editButton} onClick={() => onEdit(todo)}>
+          <FaEdit />
         </button>
         <button className={styles.deleteButton} onClick={() => onDelete(todo.id)}>
           <FaTrash />
@@ -22,5 +22,3 @@ function TodoItem({ todo, toggleComplete, onEdit, onDelete }) {
 }
 
 export default TodoItem;
-
-

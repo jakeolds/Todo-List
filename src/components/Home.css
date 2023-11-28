@@ -54,7 +54,12 @@
     text-decoration: none; /* Remove link underlines */
     color: inherit; /* Inherit text color from parent */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
   }
+
+  .list-preview:hover {
+    transform: scale(1.10); /* Slightly larger scale up on hover */
+}
   
   .list-icon {
     margin-bottom: 8px;

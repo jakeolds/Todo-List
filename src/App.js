@@ -63,7 +63,15 @@ function App() {
       <div className="app">
         <Routes>
           <Route path="/" element={<Home lists={lists} onCreateNewList={onCreateNewList} deleteList={deleteList} editList={onEditList} />} />
-          <Route path="/list/:listId" element={<ListDetailView lists={lists} updateListTasks={updateListTasks} />} />
+          <Route 
+            path="/list/:listId" 
+            element={
+              <ListDetailView 
+                lists={lists} 
+                updateListTasks={updateListTasks}
+              />
+            } 
+          />
         </Routes>
         {isModalOpen && (
           <NewListModal

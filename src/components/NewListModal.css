@@ -43,13 +43,27 @@
   }
   
   .text-input {
-    width: 100%;
+    width: calc(100% - 30px); /* Adjust width */
     padding: 10px;
     border-radius: 4px;
     border: 1px solid #ccc;
     font-size: 16px;
-  }
-  
+    outline-color: var(--selected-color-theme); /* Dynamic highlight color */
+}
+
+.text-input:focus {
+  outline: 2px solid var(--selected-color-theme); 
+}
+
+.text-input::selection {
+  background-color: var(--selected-color-theme);
+  color: white; /* You can adjust the text color as needed */
+}
+
+.text-input::-moz-selection {
+  background-color: var(--selected-color-theme);
+  color: white; /* You can adjust the text color as needed */
+}
   .icon-selection {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
@@ -67,10 +81,9 @@
     transition: all 0.3s ease;
   }
   
-  .icon-wrapper:hover,
-  .icon-wrapper.selected {
-    transform: scale(1.1);
-    border: 2px solid #4CAF50;
+  .icon-wrapper.selected,
+  .icon-wrapper:hover {
+      border: 2px solid var(--selected-color-theme); 
   }
   
   .icon {
@@ -80,16 +93,12 @@
   .create-list-button {
     width: 100%;
     padding: 10px 0;
-    background-color: #4CAF50; 
+    background-color: var(--selected-color-theme); 
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-  }
-  
-  .create-list-button:hover {
-    background-color: #388E3C; 
   }
   
   .color-input-label {
@@ -115,7 +124,6 @@
   }
   
   .color-option.selected {
-    border-color: #4CAF50; 
+    border-color: grey;
   }
-  
   

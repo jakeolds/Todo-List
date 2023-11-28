@@ -1,11 +1,9 @@
-// src/components/TodoForm/index.js
 import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
 
 function TodoForm({ addTodo, editTodo, todoBeingEdited, cancelEdit }) {
   const [input, setInput] = useState('');
 
- 
   useEffect(() => {
     if (todoBeingEdited) setInput(todoBeingEdited.text);
   }, [todoBeingEdited]);
@@ -27,7 +25,7 @@ function TodoForm({ addTodo, editTodo, todoBeingEdited, cancelEdit }) {
       });
     }
     setInput('');
-    if (cancelEdit) cancelEdit(); 
+    if (cancelEdit) cancelEdit();
   };
 
   return (
@@ -53,4 +51,5 @@ function TodoForm({ addTodo, editTodo, todoBeingEdited, cancelEdit }) {
 }
 
 export default TodoForm;
+
 

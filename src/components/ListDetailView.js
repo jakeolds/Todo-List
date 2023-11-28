@@ -9,7 +9,7 @@ import './ListDetailView.css';
 
 function ListDetailView({ lists, updateListTasks }) {
     const { listId } = useParams();
-    const list = lists.find(list => list.id.toString() === listId);
+    const list = lists.find(list => list.id === listId);
 
     const {
         tasks,
@@ -22,17 +22,9 @@ function ListDetailView({ lists, updateListTasks }) {
 
     const [editingTaskId, setEditingTaskId] = useState(null);
 
-    const tasksAreEqual = (a, b) => {
-        if (a.length !== b.length) return false;
-        for (let i = 0; i < a.length; i++) {
-            if (a[i].id !== b[i].id || a[i].isCompleted !== b[i].isCompleted || a[i].text !== b[i].text) {
-                return false;
-            }
-        }
-        return true;
-    };
-
     useEffect(() => {
+        document.documentElement.style.setProperty('--primary-color', list?.colorTheme || '#5cb85c');
+
         if (list && !tasksAreEqual(tasks, list.tasks)) {
             updateListTasks(list.id, tasks);
         }
@@ -79,6 +71,15 @@ function ListDetailView({ lists, updateListTasks }) {
 
 export default ListDetailView;
 
+function tasksAreEqual(a, b) {
+    if (a.length !== b.length) return false;
+    for (let i = 0; i < a.length; i++) {
+        if (a[i].id !== b[i].id || a[i].isCompleted !== b[i].isCompleted || a[i].text !== b[i].text) {
+            return false;
+        }
+    }
+    return true;
+}
 
 
 

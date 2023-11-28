@@ -1,63 +1,70 @@
 /* ListDetailView.css */
-
-/* Container for the entire List Detail View */
 .list-detail-view {
-    background-color: #f8f4f4; 
-    padding: 30px;
-    border-radius: 12px;
-    max-width: 800px;
-    margin: 40px auto;
-    text-align: center;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* subtle shadow for depth */
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  }
-  
-  .list-detail-view:hover {
-    transform: scale(1.03);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-  }
-  
-  .list-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 30px;
-  }
-  
-  .list-icon {
-    font-size: 4rem;
-    margin-bottom: 20px;
-  }
-  
-  .list-title {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #333;
-    margin: 0 0 20px 0;
-  }
-  
-  .progress-bar-container {
-    width: 100%;
-    background-color: #e0e0e0;
-    border-radius: 25px;
-    overflow: hidden;
-    margin-bottom: 30px;
-  }
-  
-  .progress-bar {
-    height: 25px;
-    background-color: var(--primary-color, #5cb85c);
-    width: 0;
-    border-radius: 25px;
-    transition: width 0.5s ease-in-out;
-  }
-  
-  /* Ensuring the form is centered and styled */
-  .todo-form {
-    /* ... existing styles ... */
-  }
-  
-  /* Add any additional animations or styles for other elements here */
+  background-color: #f8f4f4;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 800px;
+  margin: 40px auto;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* subtle shadow for depth */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.list-detail-view:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.list-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.list-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.list-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 20px 0;
+}
+
+.progress-bar-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 25px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.progress-bar {
+  height: 25px;
+  background-color: var(--primary-color, #5cb85c);
+  width: calc(var(--progress-width) * 1% - 2px); /* Adjust the width */
+  border-radius: 25px; /* Maintain rounded corners */
+  transition: width 0.5s ease-in-out;
+}
+
+/* Ensuring the form is centered and styled */
+.todo-form .todo-input:focus {
+  outline: 2px solid var(--primary-color); /* Dynamic highlight color */
+}
+
+.todo-form .todo-button {
+  background-color: var(--primary-color); /* Dynamic color */
+}
+
+.todo-form .todo-button:hover {
+  background-color: darken(var(--primary-color), 10%);
+}
+
+/* Add any additional animations or styles for other elements here */
+
   
   
   
