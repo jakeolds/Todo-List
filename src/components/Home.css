@@ -1,69 +1,101 @@
 .home {
-    text-align: center;
-    background-color: #cfd8dc; 
-  }
-  
-  .home-header {
-    display: flex;
-    flex-direction: column; /* Stack children vertically */
-    align-items: center; /* Center-align children */ 
-    color: #333333;
-    padding: 16px;
-    text-align: center; /* Center-align text */
-  }
-  
-  .home-header h1 {
-    margin-bottom: 16px; /* Space between the title and the button */
-  }
-  
-  .add-list-button {
-    background-color: #ffffff;
-    color: #333333; 
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-size: 25px;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .add-list-button:hover {
-    background-color: #f8f8f8; 
-  }
-  
-  .plus-icon {
-    margin-right: 16px;
-  }
-  
-  .list-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding: 16px;
-    justify-content: center;
-  }
-  
-  .list-preview {
-    width: 250px; /* Adjust size as needed */
-    height: 250px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none; /* Remove link underlines */
-    color: inherit; /* Inherit text color from parent */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
-    transition: transform 0.3s ease; /* Smooth transition for hover effect */
-  }
-
-  .list-preview:hover {
-    transform: scale(1.10); /* Slightly larger scale up on hover */
+  text-align: center;
+  background-color: #f0f0f0; /* Light grey background */
 }
-  
-  .list-icon {
-    margin-bottom: 8px;
-  }
-  
-  /* Additional styles for hover effects, active states, etc., can be added here */
+
+.home-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+}
+
+.home-header h1 {
+  margin-bottom: 16px;
+}
+
+.add-list-button {
+  background-color: #28a745; /* Primary color */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-list-button:hover {
+  background-color: #218838; /* Slightly darker on hover */
+}
+
+.plus-icon {
+  margin-right: 8px;
+}
+
+.list-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  justify-content: center;
+}
+
+.list-item {
+  width: 250px;
+  margin: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  background-color: transparent; 
+}
+
+.list-item:hover {
+  transform: scale(1.05);
+}
+
+.list-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 16px;
+  background-color: transparent; 
+}
+
+.list-icon {
+  margin-bottom: 8px;
+}
+
+.list-actions {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px;
+}
+
+.icon-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.icon-button.edit-button {
+  color: #ffc107; /* Edit button color */
+}
+
+.icon-button.delete-button {
+  color: #dc3545; /* Delete button color */
+}
+
+.icon-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
   

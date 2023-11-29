@@ -2,15 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css'; 
 import { icons } from './icons';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 function Home({ lists, onCreateNewList, deleteList, editList }) {
   const handleDeleteList = (listId) => {
-    // Call the deleteList function passed as a prop
     deleteList(listId);
   };
 
   const handleEditList = (listId) => {
-    // Call the editList function passed as a prop
     editList(listId);
   };
 
@@ -33,8 +32,14 @@ function Home({ lists, onCreateNewList, deleteList, editList }) {
                 </div>
                 <h2>{list.title}</h2>
               </Link>
-              <button onClick={() => handleEditList(list.id)}>Edit</button>
-              <button onClick={() => handleDeleteList(list.id)}>Delete</button>
+              <div className="list-actions">
+                <button className="icon-button edit-button" onClick={() => handleEditList(list.id)}>
+                  <FaEdit />
+                </button>
+                <button className="icon-button delete-button" onClick={() => handleDeleteList(list.id)}>
+                  <FaTrash />
+                </button>
+              </div>
             </div>
           );
         })}
