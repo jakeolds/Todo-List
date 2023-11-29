@@ -63,8 +63,30 @@
   background-color: darken(var(--primary-color), 10%);
 }
 
-/* Add any additional animations or styles for other elements here */
+.back-button {
+  width: auto;
+  padding: 10px 20px;
+  margin: 20px 0;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
 
+.list-detail-view {
+  position: relative;
+}
+
+
+.list-detail-view .back-button {
+  position: absolute;
+  bottom: -70px; 
+  left: 50%;
+  transform: translateX(-50%);
+}
   
   
   

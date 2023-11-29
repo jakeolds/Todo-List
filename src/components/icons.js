@@ -1,4 +1,4 @@
-import { FaHome, FaShoppingCart, FaBroom, FaCar, FaUtensils, FaBriefcase, FaBook, FaLaptop, FaHeart, FaDumbbell, FaMoneyBillWave } from 'react-icons/fa';
+import { FaHome, FaShoppingCart, FaBroom, FaCar, FaUtensils, FaBriefcase, FaBook, FaLaptop, FaHeart, FaDumbbell, FaMoneyBillWave, FaPlane, FaLeaf, FaPaw, FaMusic, FaFootballBall, FaUsers, FaPaintBrush, FaGraduationCap, FaStethoscope, FaTools, FaSpa, FaBirthdayCake, FaCookieBite } from 'react-icons/fa';
 
 export const icons = [
   { component: FaHome, name: 'Home' },
@@ -12,4 +12,17 @@ export const icons = [
   { component: FaHeart, name: 'Health' },
   { component: FaDumbbell, name: 'Fitness' },
   { component: FaMoneyBillWave, name: 'Finance' },
+  { component: FaPlane, name: 'Travel' },
+  { component: FaLeaf, name: 'Gardening' },
+  { component: FaPaw, name: 'Pets' },
+  { component: FaMusic, name: 'Music' },
+  { component: FaFootballBall, name: 'Sports' },
+  { component: FaUsers, name: 'Social' },
+  { component: FaPaintBrush, name: 'Art/Craft' },
+  { component: FaGraduationCap, name: 'Education' },
+  { component: FaStethoscope, name: 'Healthcare' },
+  { component: FaTools, name: 'Maintenance' },
+  { component: FaSpa, name: 'Relaxation' },
+  { component: FaBirthdayCake, name: 'Birthday/Anniversary' },
+  { component: FaCookieBite, name: 'Cooking/Baking' },
 ];

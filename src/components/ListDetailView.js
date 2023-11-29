@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useTasks } from '../hooks/useTasks';
 import ProgressBar from './ProgressBar';
 import TodoForm from './TodoForm';
@@ -8,12 +8,13 @@ import { icons } from './icons';
 import './ListDetailView.css';
 
 function ListDetailView({ lists, updateListTasks }) {
+    const navigate = useNavigate();
     const { listId } = useParams();
-    const list = lists.find(list => list.id === listId);
+    const list = lists.find(list => list.id.toString() === listId);
 
     const {
         tasks,
-        setTasks,
+        setTasks, 
         addTask,
         editTask,
         toggleTaskCompleted,
@@ -41,6 +42,8 @@ function ListDetailView({ lists, updateListTasks }) {
     const handleDeleteTask = (taskId) => {
         setTasks(currentTasks => currentTasks.filter(task => task.id !== taskId));
     };
+    
+    const goBack = () => navigate(-1);
 
     if (!list) {
         return <div>List not found</div>;
@@ -65,11 +68,10 @@ function ListDetailView({ lists, updateListTasks }) {
                 onEditTask={handleEditTask}
                 onDeleteTask={handleDeleteTask}
             />
+            <button className="back-button" onClick={goBack}>Back to Lists</button>
         </div>
     );
 }
-
-export default ListDetailView;
 
 function tasksAreEqual(a, b) {
     if (a.length !== b.length) return false;
@@ -80,6 +82,10 @@ function tasksAreEqual(a, b) {
     }
     return true;
 }
+
+export default ListDetailView;
+
+
 
 
 
