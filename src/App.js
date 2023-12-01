@@ -23,37 +23,35 @@ function App() {
   }, [auth]);
 
   const handleSignIn = (email, password) => {
-    const auth = getAuth();
     return signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in successfully
-        const user = userCredential.user;
-        setUser(user); // Update user state
-        console.log('User signed in:', user);
+        setUser(userCredential.user);
+        console.log('User signed in:', userCredential.user);
       })
+      .catch((error) => {
+        console.error('Sign in error:', error);
+      });
   };
   
   const handleSignUp = (email, password) => {
-    console.log('Attempting to sign up with:', email); // Log email for debugging
-    createUserWithEmailAndPassword(auth, email, password)
+    return createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log('Signed up:', userCredential.user);
         setUser(userCredential.user);
+        console.log('User signed up:', userCredential.user);
       })
       .catch((error) => {
-        console.error('Sign up error:', error.message);
+        console.error('Sign up error:', error);
       });
   };
   
   const handleSignOut = () => {
-    console.log('Attempting to sign out');
     signOut(auth)
       .then(() => {
-        console.log('Sign out successful');
         setUser(null);
+        console.log('User signed out');
       })
       .catch((error) => {
-        console.error('Sign out error:', error.message);
+        console.error('Sign out error:', error);
       });
   };
 
@@ -107,12 +105,10 @@ function App() {
     <Router>
       <div className="app">
         <Routes>
-          <Route path="/" element={user ? (console.log('Rendering Home'), <Home lists={lists} onCreateNewList={onCreateNewList} deleteList={deleteList} editList={onEditList} />) : (console.log('Redirecting to SignIn'), <Navigate replace to="/signin" />)} />
-          <Route path="/list/:listId" element={user ? (console.log('Rendering ListDetailView'), <ListDetailView lists={lists} updateListTasks={updateListTasks} />) : (console.log('Redirecting to SignIn'), <Navigate replace to="/signin" />)} />
+          <Route path="/" element={user ? <Home lists={lists} onCreateNewList={onCreateNewList} deleteList={deleteList} editList={onEditList} onSignOut={handleSignOut} /> : <Navigate replace to="/signin" />} />
+          <Route path="/list/:listId" element={user ? <ListDetailView lists={lists} updateListTasks={updateListTasks} /> : <Navigate replace to="/signin" />} />
           <Route path="/signin" element={<SignIn onSignIn={handleSignIn} />} />
           <Route path="/signup" element={<SignUp onSignUp={handleSignUp} />} />
-          {/* Add a signout path if needed */}
-          {/* Other routes */}
         </Routes>
         {isModalOpen && (
           <NewListModal
@@ -127,5 +123,6 @@ function App() {
 }
 
 export default App;
+
 
 

@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css'; 
 import { icons } from './icons';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaSignOutAlt } from 'react-icons/fa';
 
-function Home({ lists, onCreateNewList, deleteList, editList }) {
+function Home({ lists, onCreateNewList, deleteList, editList, onSignOut }) {
   const handleDeleteList = (listId) => {
     deleteList(listId);
   };
@@ -44,8 +44,15 @@ function Home({ lists, onCreateNewList, deleteList, editList }) {
           );
         })}
       </main>
+      <footer className="footer">
+        <button className="signOutButton" onClick={onSignOut}>
+          <FaSignOutAlt /> Sign Out
+        </button>
+      </footer>
     </div>
   );
 }
 
 export default Home;
+
+

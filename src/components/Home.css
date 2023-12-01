@@ -1,6 +1,8 @@
 .home {
-  text-align: center;
-  background-color: #f0f0f0; /* Light grey background */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
 }
 
 .home-header {
@@ -15,7 +17,7 @@
 }
 
 .add-list-button {
-  background-color: #28a745; /* Primary color */
+  background-color: #a3d2ca; /* Primary color */
   color: white;
   border: none;
   padding: 8px 16px;
@@ -26,7 +28,7 @@
 }
 
 .add-list-button:hover {
-  background-color: #218838; /* Slightly darker on hover */
+  background-color: #5eaaa8; /* Slightly darker on hover */
 }
 
 .plus-icon {
@@ -97,5 +99,24 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.signOutButton {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  background-color: #a3d2ca;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 20px auto;
+  display: block;
+}
 
-  
+.signOutButton:hover {
+  background-color: #5eaaa8;
+}
+
+.footer {
+  text-align: center;
+}
