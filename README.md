@@ -2,6 +2,8 @@ To Test this code use the following Sign in:
 AnonToDoList@gmail.com
 Password: Test123
 
+Check The wiki for example images
+
 
 # Getting Started with Create React App
 
