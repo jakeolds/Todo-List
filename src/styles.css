@@ -1,115 +1,58 @@
-/* Global Styles */
+/* Global Styles with Themes */
 :root {
-    --primary-color: #28a745; /* This is a green shade for the primary color */
-    --background-grey: #cfd8dc;
-    
-  }
-  
-  body, html {
-    font-family: 'Open+Sans', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-    background-color: #cfd8dc; /* Darker pastel grey */
-    color: #333;
-  }
-  
-  .app-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  /* Header Styles */
-  .header {
-    text-align: center;
-    margin: 20px 0;
-  }
-  
-  .header h1 {
-    color: #007bff;
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-  }
-  
-  /* TodoForm Styles */
-  .todo-form {
-    margin-bottom: 40px;
-    width: 100%;
-    max-width: 500px;
-  }
-  
-  .todo-input {
-    width: calc(100% - 100px);
-    height: 40px;
-    padding: 0 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-right: 10px;
-    vertical-align: top;
-  }
-  
-  .todo-button {
-    width: 80px;
-    height: 40px;
-    background-color: var(--primary-color); /* Using primary color variable */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .todo-button:hover {
-    background-color: darken(var(--primary-color), 10%); /* Darken function may require a CSS preprocessor like SASS */
-  }
-  
-  /* TodoList Styles */
-  .todo-list {
-    width: 100%;
-    max-width: 500px;
-  }
-  
-  /* TodoItem Styles */
-  .todo-item {
-    background-color: white;
-    border: 1px solid #ddd;
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .todo-item.completed .text {
-    text-decoration: line-through;
-    color: #aaa;
-  }
-  
-  /* Footer Styles */
-  .footer {
-    margin-top: auto;
-    text-align: center;
-    padding: 20px 0;
-  }
-  
-  .footer p {
-    color: #777;
-  }
-  
-  .progressBar {
-    width: 100%;
-    background-color: #e0e0e0;
-    border-radius: 20px;
-  }
-  
-  .progressBarFiller {
-    height: 20px;
-    background-color: var(--primary-color); 
-    border-radius: 20px 0 0 20px;
-    transition: width 0.5s ease-in-out;
-  }
-  
+  --primary-color: #28a745;
+  /* Default primary color (green) */
+  --secondary-color: #007bff;
+  /* Default secondary color (blue) */
+  --background-color: #f0f0f0;
+  /* Light background */
+  --text-color: #333333;
+  --accent-color: #ffb703;
+  /* Accent color */
+  --error-color: #d90429;
+  /* Error color */
+  --border-radius: 8px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.3s;
+}
+
+/* Dark Theme */
+.theme-dark {
+  --primary-color: #181818;
+  --secondary-color: #1e90ff;
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --accent-color: #ffc107;
+  --error-color: #ff6b6b;
+}
+
+/* Sage Green Theme */
+.theme-sage {
+  --primary-color: #88a28a;
+  --secondary-color: #a3d2ca;
+  --background-color: #e3e7e1;
+  --text-color: #4b6043;
+  --accent-color: #a3d2ca;
+  --error-color: #f76a8c;
+}
+
+/* Deep Blue Theme */
+.theme-blue {
+  --primary-color: #0a192f;
+  --secondary-color: #1b75bc;
+  --background-color: #f0f7ff;
+  --text-color: #d1e8ff;
+  --accent-color: #ffb703;
+  --error-color: #ff6b6b;
+}
+
+body,
+html {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}

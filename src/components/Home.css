@@ -17,7 +17,8 @@
 }
 
 .add-list-button {
-  background-color: #a3d2ca; /* Primary color */
+  background-color: #a3d2ca;
+  /* Primary color */
   color: white;
   border: none;
   padding: 8px 16px;
@@ -28,7 +29,8 @@
 }
 
 .add-list-button:hover {
-  background-color: #5eaaa8; /* Slightly darker on hover */
+  background-color: #5eaaa8;
+  /* Slightly darker on hover */
 }
 
 .plus-icon {
@@ -50,7 +52,7 @@
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
-  background-color: transparent; 
+  background-color: transparent;
 }
 
 .list-item:hover {
@@ -65,7 +67,7 @@
   text-decoration: none;
   color: inherit;
   padding: 16px;
-  background-color: transparent; 
+  background-color: transparent;
 }
 
 .list-icon {
@@ -88,11 +90,13 @@
 }
 
 .icon-button.edit-button {
-  color: #ffc107; /* Edit button color */
+  color: #ffc107;
+  /* Edit button color */
 }
 
 .icon-button.delete-button {
-  color: #dc3545; /* Delete button color */
+  color: #dc3545;
+  /* Delete button color */
 }
 
 .icon-button:hover {

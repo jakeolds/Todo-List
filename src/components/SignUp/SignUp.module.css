@@ -1,39 +1,42 @@
+.signInContainer,
 .signUpContainer {
-    background-color: #fce2db; 
-    padding: 30px;
-    border-radius: 12px;
-    max-width: 300px;
-    margin: 40px auto;
-    text-align: center;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
-  }
-  
-  .inputField {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  .signUpButton {
-    width: 100%;
-    padding: 10px;
-    background-color: #ffcad4; 
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .signUpButton:hover {
-    background-color: #f76a8c; 
-  }
-  
-  .error {
-    color: #ff6b6b; 
-    margin-bottom: 20px;
-  }
-  
+  background-color: var(--background-color);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  max-width: 300px;
+  margin: 40px auto;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+  transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.inputField {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+}
+
+.signInButton,
+.signUpButton {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+}
+
+.signInButton:hover,
+.signUpButton:hover {
+  background-color: darken(var(--primary-color), 10%);
+}
+
+.error {
+  color: var(--error-color);
+  margin-bottom: 20px;
+}

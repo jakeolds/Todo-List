@@ -1,23 +1,26 @@
 import React, { useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import styles from './SignUp.module.css'; 
+import { useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase-config'; // Adjusted path to firebase-config
+import styles from './SignUp.module.css';
 
 function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
-  const auth = getAuth();
+  const navigate = useNavigate();
 
   const handleSignUp = (e) => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in 
-        // ...
+        // Successfully signed up
+        console.log('User signed up:', userCredential.user);
+        navigate('/'); // Navigate to home or other page after signup
       })
       .catch((error) => {
         setError(error.message);
+        console.error('Sign up error:', error.message);
       });
   };
 
@@ -49,3 +52,4 @@ function SignUp() {
 }
 
 export default SignUp;
+

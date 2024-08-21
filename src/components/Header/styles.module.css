@@ -1,14 +1,14 @@
 /* components/Header/styles.module.css */
 .header {
-    width: 100%;
-    padding: 20px 0;
-    background-color: #28a745; /* Green background for the header */
-    color: white;
-    text-align: center;
-  }
-  
-  .title {
-    margin: 0;
-    font-size: 2rem;
-  }
-  
+  width: 100%;
+  padding: 20px 0;
+  background-color: #28a745;
+  /* Green background for the header */
+  color: white;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  font-size: 2rem;
+}

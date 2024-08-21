@@ -6,6 +6,8 @@ import ListDetailView from './components/ListDetailView';
 import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp/SignUp';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
+import { doc, setDoc, getDoc } from 'firebase/firestore'; // Import Firestore methods
+import { db } from './firebase-config'; // Import Firestore instance
 
 function App() {
   const [lists, setLists] = useState([]);
@@ -15,12 +17,38 @@ function App() {
   const auth = getAuth(); // Firebase auth instance
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currentUser => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
+      if (currentUser) {
+        try {
+          const docRef = doc(db, 'users', currentUser.uid);
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            setLists(docSnap.data().lists); // Load lists from Firestore
+          } else {
+            console.log('No lists found in Firestore');
+          }
+        } catch (error) {
+          console.error('Error loading lists:', error);
+        }
+      } else {
+        setLists([]); // Clear lists when user logs out
+      }
       console.log('Auth state changed. Current user:', currentUser);
     });
     return () => unsubscribe();
   }, [auth]);
+
+  const saveListsToFirestore = async (updatedLists) => {
+    if (user) {
+      try {
+        await setDoc(doc(db, 'users', user.uid), { lists: updatedLists });
+        console.log('Lists saved to Firestore');
+      } catch (error) {
+        console.error('Error saving lists:', error);
+      }
+    }
+  };
 
   const handleSignIn = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password)
@@ -32,7 +60,7 @@ function App() {
         console.error('Sign in error:', error);
       });
   };
-  
+
   const handleSignUp = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -43,7 +71,7 @@ function App() {
         console.error('Sign up error:', error);
       });
   };
-  
+
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -56,11 +84,10 @@ function App() {
   };
 
   const addOrUpdateList = (id, title, iconName, colorTheme) => {
+    let updatedLists;
     if (id) {
-      setLists(prevLists =>
-        prevLists.map(list =>
-          list.id === id ? { ...list, title, icon: iconName, colorTheme } : list
-        )
+      updatedLists = lists.map(list =>
+        list.id === id ? { ...list, title, icon: iconName, colorTheme } : list
       );
     } else {
       const newList = {
@@ -70,20 +97,24 @@ function App() {
         colorTheme,
         tasks: [],
       };
-      setLists(prevLists => [...prevLists, newList]);
+      updatedLists = [...lists, newList];
     }
+    setLists(updatedLists);
+    saveListsToFirestore(updatedLists); // Save updated lists to Firestore
   };
 
   const updateListTasks = (listId, newTasks) => {
-    setLists(prevLists =>
-      prevLists.map(list =>
-        list.id === listId ? { ...list, tasks: newTasks } : list
-      )
+    const updatedLists = lists.map(list =>
+      list.id === listId ? { ...list, tasks: newTasks } : list
     );
+    setLists(updatedLists);
+    saveListsToFirestore(updatedLists); // Save updated lists to Firestore
   };
 
   const deleteList = (listId) => {
-    setLists(prevLists => prevLists.filter(list => list.id !== listId));
+    const updatedLists = lists.filter(list => list.id !== listId);
+    setLists(updatedLists);
+    saveListsToFirestore(updatedLists); // Save updated lists to Firestore
   };
 
   const closeModal = () => {
@@ -123,6 +154,7 @@ function App() {
 }
 
 export default App;
+
 
 
 

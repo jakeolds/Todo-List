@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './SignIn.module.css'; 
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase-config'; // Adjusted path to firebase-config
+import styles from './SignIn.module.css';
 
-function SignIn({ onSignIn }) {
+function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -13,7 +15,7 @@ function SignIn({ onSignIn }) {
     e.preventDefault();
     console.log('Submitting sign in form with email:', email);
 
-    onSignIn(email, password)
+    signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         // Navigate to home page after successful sign in
         navigate('/');
@@ -52,4 +54,7 @@ function SignIn({ onSignIn }) {
 }
 
 export default SignIn;
+
+
+
 
